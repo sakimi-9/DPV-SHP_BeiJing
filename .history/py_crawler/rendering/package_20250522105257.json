@@ -1,0 +1,22 @@
+{
+    "name": "rendering",
+    "module": "src/main.ts",
+    "type": "module",
+    "scripts": {
+        "dev": "bun vite",
+        "build": "bun vite build"
+    },
+    "dependencies": {
+        "vue": "^3.4.0"
+    },
+    "devDependencies": {
+        "typescript": "^5.0.0",
+        "echarts": "^5.5.0",
+        "three": "^0.164.0",
+        "xlsx": "^0.18.5",
+        "@types/node": "^20.12.12",
+        "vite": "^5.2.0",
+        "@vitejs/plugin-vue": "^5.0.0",
+        "@types/three": "^0.165.0"
+    }
+}
