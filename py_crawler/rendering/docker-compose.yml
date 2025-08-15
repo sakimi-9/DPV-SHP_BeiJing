@@ -1,0 +1,37 @@
+version: '3.8'
+
+services:
+  dpv-shp-beijing:
+    image: sakimi9/dpv-shp_beijing:latest
+    container_name: dpv-shp_beijing
+    ports:
+      - "8080:80"
+    restart: unless-stopped
+    healthcheck:
+      test: [ "CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:80/health" ]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 30s
+    environment:
+      - NODE_ENV=production
+    networks:
+      - dpv-network
+  # 可选：添加其他服务，如数据库、API等
+  # database:
+  #   image: mysql:8.0
+  #   container_name: dpv-database
+  #   environment:
+  #     MYSQL_ROOT_PASSWORD: root
+  #     MYSQL_DATABASE: dpv_beijing
+  #   volumes:
+  #     - mysql_data:/var/lib/mysql
+  #   networks:
+  #     - dpv-network
+
+networks:
+  dpv-network:
+    driver: bridge
+
+# volumes:
+#   mysql_data:
